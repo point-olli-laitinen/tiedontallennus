@@ -13,13 +13,26 @@ namespace TiedontallennusCmd
     {
         static void Main(string[] args)
         {
+            string tiedosto = @"D:\Code\lämpötila.txt";
+
+            //Luetaan tiedostosta aiemmin asetettu lämpötila
+            if (File.Exists(tiedosto))
+            {
+                string aiempiArvo = File.ReadAllText(tiedosto);
+                Console.WriteLine("Aiemmin asetettu lämpötila on:  " + 
+                    aiempiArvo + "  astetta!");
+            }
+            else
+            {
+                Console.WriteLine("Tervetuloa lämmityksen asettamis sovellukseen!");
+            }
+
             int lämpötila = 0;
             Console.Write("Aseta uusi lämpötila:   ");
             string syöte = Console.ReadLine();
             lämpötila = int.Parse(syöte);
 
             //Tiedostoon kirjoittaminen
-            string tiedosto = @"D:\Code\lämpötila.txt";
             File.WriteAllText(tiedosto, lämpötila.ToString());
             Console.WriteLine("Lämpötila tallennettu.");
 
